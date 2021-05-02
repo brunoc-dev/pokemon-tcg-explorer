@@ -1,0 +1,24 @@
+{
+  "name": "pokemon-tcg-explorer",
+  "version": "1.0.0",
+  "description": "A pokémon card explorer",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrunoRazera/pokemon-tcg-explorer.git"
+  },
+  "keywords": [
+    "pokémon",
+    "card",
+    "game"
+  ],
+  "author": "Bruno Cavalcante Razera",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BrunoRazera/pokemon-tcg-explorer/issues"
+  },
+  "homepage": "https://github.com/BrunoRazera/pokemon-tcg-explorer#readme"
+}
