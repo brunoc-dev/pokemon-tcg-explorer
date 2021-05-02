@@ -1,2 +1,2 @@
 # pokemon-tcg-explorer
-Explore all the card from pokémon card game.
+Explore all the cards from pokémon card game.
