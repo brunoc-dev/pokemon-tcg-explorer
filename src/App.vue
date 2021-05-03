@@ -7,6 +7,13 @@
 <style lang="sass">
 body
   margin: 0
+  & *
+    display: flex
+    justify-content: center
+    align-content: center
+    align-items: center
+    flex-wrap: wrap
+    box-sizing: border-box
 
 #app
   font-family: Avenir, Helvetica, Arial, sans-serif

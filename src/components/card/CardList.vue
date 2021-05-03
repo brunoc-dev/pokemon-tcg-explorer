@@ -1,7 +1,7 @@
 <template>
   <main>
     <header>
-      <h1>Pokémon Trading Card Game</h1>
+      <h2>Pokémon Trading Card Game</h2>
       <input v-model="filter.name" class="search" type="text">
       <button class="search-btn" @click="getCards">
         Buscar
@@ -86,22 +86,23 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+header
+  margin: 1rem
+  &  *
+    flex: 1 1 18rem
+
 .search
-  width: 80%
-  height: 1.5rem
+  height: 1.7rem
   margin: 1rem 0
 
 .search-btn
+    flex: 0 0 5rem !important
     height: 1.8rem
 
 .card-list
-  display: flex
-  flex-wrap: wrap
-  justify-content: center
-  align-content: center
-  align-items: center
   width: 90vw
   height: 80vh
+  overflow: auto
 
 .card-list *
   display: flex

@@ -3,27 +3,75 @@
     <aside class="card-image">
       <img :src="card.images.large" alt="Pokémon card">
     </aside>
+
     <header>{{ card.name }} #{{ card.id.toUpperCase() }}</header>
+
     <section class="card-data">
-      <div>
-        Types:
-        <template v-for="type in card.types">
+      <div class="features">
+        <strong>Types:</strong>
+        <div
+          v-for="(type, index) in card.types"
+          :key="'type#' + index"
+          class="feature"
+        >
           {{ type }}
-        </template>
+        </div>
+      </div>
+
+      <strong>Resistances</strong>
+      <div
+        v-for="(resistance, index) in card.resistances"
+        :key="'res#' + index"
+        class="feature"
+      >
+        <a>{{ resistance.type }} | {{ resistance.value }}</a>
+      </div>
+
+      <strong>Attacks</strong>
+      <div
+        v-for="(attack, index) in card.attacks"
+        :key="'atk#' + index"
+        class="features"
+      >
+        <div @click="openModal(attack)">
+          {{ attack.name }}
+        </div>
+      </div>
+
+      <strong>Weaknesses</strong>
+      <div
+        v-for="weakness in card.weaknesses"
+        :key="'weak#' + weakness"
+        class="feature"
+      >
+        {{ weakness.type }} | {{ weakness.value }}
       </div>
     </section>
+    <CardAttackModal v-if="showModal" :atack="selectedAtack" @close="showModal = false" />
   </main>
 </template>
 
 <script>
+import CardAttackModal from '@/components/card/CardAttackModal.vue'
 import { mapGetters } from 'vuex'
 export default {
   name: 'CardDetails',
+
+  components: {
+    CardAttackModal
+  },
 
   props: {
     id: {
       type: [String, Number],
       default: null
+    }
+  },
+
+  data () {
+    return {
+      showModal: false,
+      selectedAtack: {}
     }
   },
 
@@ -42,6 +90,11 @@ export default {
   methods: {
     getCard () {
       this.$store.dispatch('card/getCard', this.id)
+    },
+
+    openModal (atack) {
+      this.selectedAtack = atack
+      this.showModal = true
     }
   }
 }
@@ -74,5 +127,5 @@ header
 
 .card-image img
   width: 100%
-  max-width: 35rem
+  max-width: 28rem
 </style>
